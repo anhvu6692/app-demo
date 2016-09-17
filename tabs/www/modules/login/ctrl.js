@@ -7,27 +7,27 @@ var LoginCtrl = function ($scope,$state,$mockingService,$deviceParsingService,$s
 		password : user.password
 	};
 
-	 $scope.$watch('$viewContentLoaded', function(){
-	 	$ionicLoading.show({
-	 		template: '<ion-spinner></ion-spinner>'
-	 	});
-	 	$timeout(function(){
-	 		$socketService.connect(function(code,message){
-	 			if (code == 0 ){ // init complete
-	 				$socketService.sendData($statementService.createLoginString($scope.user.username,$scope.user.password));
-	 			} else if (code == -1){
-	 				alert("Không thể kết nối đến server ! ");
-	 			} else if (code == 20 || code == 21){
-	 				$storageService.saveUserToStorage($scope.user.username,$scope.user.password);
-	 				$state.go('home');
-	 				$ionicLoading.hide();
-	 			} else {
-	 				alert("Lỗi khi kết nối đến server !");
-	 			}
-	 		});
-			$timeout(function(){ $ionicLoading.hide(); },500);
-	 	},300);
-	 });
+	 //$scope.$watch('$viewContentLoaded', function(){
+	 //	$ionicLoading.show({
+	 //		template: '<ion-spinner></ion-spinner>'
+	 //	});
+	 //	$timeout(function(){
+	 //		$socketService.connect(function(code,message){
+	 //			if (code == 0 ){ // init complete
+	 //				$socketService.sendData($statementService.createLoginString($scope.user.username,$scope.user.password));
+	 //			} else if (code == -1){
+	 //				alert("Không thể kết nối đến server ! ");
+	 //			} else if (code == 20 || code == 21){
+	 //				$storageService.saveUserToStorage($scope.user.username,$scope.user.password);
+	 //				$state.go('home');
+	 //				$ionicLoading.hide();
+	 //			} else {
+	 //				alert("Lỗi khi kết nối đến server !");
+	 //			}
+	 //		});
+		//	$timeout(function(){ $ionicLoading.hide(); },500);
+	 //	},300);
+	 //});
 
 	$scope.doLogin = function () {
 
@@ -40,19 +40,19 @@ var LoginCtrl = function ($scope,$state,$mockingService,$deviceParsingService,$s
 		});
 		//End Mock
 
-		 $socketService.connect(function(code,message){
-		 	if (code == 0 ){ // init complete
-		 		// isConnected = true;
-		 		$socketService.sendData($statementService.createLoginString($scope.user.username,$scope.user.password));
-		 	} else if (code == -1){
-		 		alert("Không thể kết nối đến server ! ");
-		 	} else if (code == 20 || code == 21){
-		 		$storageService.saveUserToStorage($scope.user.username,$scope.user.password);
-		 		$state.go('home');
-		 	} else {
-		 		alert("Lỗi khi kết nối đến server !");
-		 	}
-		 });
+		 //$socketService.connect(function(code,message){
+		 //	if (code == 0 ){ // init complete
+		 //		// isConnected = true;
+		 //		$socketService.sendData($statementService.createLoginString($scope.user.username,$scope.user.password));
+		 //	} else if (code == -1){
+		 //		alert("Không thể kết nối đến server ! ");
+		 //	} else if (code == 20 || code == 21){
+		 //		$storageService.saveUserToStorage($scope.user.username,$scope.user.password);
+		 //		$state.go('home');
+		 //	} else {
+		 //		alert("Lỗi khi kết nối đến server !");
+		 //	}
+		 //});
 
 	};
 };
